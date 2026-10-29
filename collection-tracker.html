@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Collection Tracker for Comics, Cards & Figures | ShelfMath</title>
+<meta name="description" content="Track your comic, card, figure or toy collection for free. Sort and filter by category, brand or franchise, see total value and gain, and export to CSV.">
+<link rel="canonical" href="https://YOURDOMAIN.com/collection-tracker.html">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta property="og:image" content="https://YOURDOMAIN.com/logo.png">
+<meta property="og:site_name" content="ShelfMath">
+<!-- AdSense: paste your auto-ads script tag here after approval -->
+<style>
+.filters{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:10px}
+@media (max-width:640px){.filters{grid-template-columns:1fr 1fr}.filters .search{grid-column:1/-1}}
+.filters label{margin:0 0 4px;font-size:.8rem;color:var(--muted)}
+th.sortable{cursor:pointer;user-select:none;white-space:nowrap}
+th.sortable:hover{color:var(--ink)}
+th.sortable[aria-sort="ascending"]::after{content:" ▲";font-size:.7em}
+th.sortable[aria-sort="descending"]::after{content:" ▼";font-size:.7em}
+td .sub{color:var(--muted);font-size:.8rem}
+.rm{padding:4px 9px;font-size:.85rem}
+.bar{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin:12px 0 6px}
+</style>
+</head>
+<body>
+<header><div class="wrap"><a class="logo" href="/">Shelf<span>Math</span></a>
+<nav><a href="resale-calculator.html">Resale Fees</a><a href="grading-calculator.html">Grading</a><a href="collection-tracker.html">Tracker</a><a href="gear.html">Gear</a><a href="shop.html">Shop</a></nav></div></header>
+<main class="wrap">
+<h1>Collection Tracker</h1>
+<p class="lead">Log your comics, cards, figures, props and more. Sort and filter by category, brand or franchise. Everything stays in your browser, and no account is needed.</p>
+
+<div class="card">
+<div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(150px,1fr))">
+<div><div class="note" id="lblCount">Items</div><div class="big" id="count">0</div></div>
+<div><div class="note">Total paid</div><div class="big" id="paid">$0</div></div>
+<div><div class="note">Current value</div><div class="big" id="value">$0</div></div>
+<div><div class="note">Gain</div><div class="big" id="gain">$0</div></div>
+</div>
+<p class="note" id="scope" style="margin:8px 0 0"></p>
+</div>
+
+<div class="card">
+<form id="f">
+<label for="name" style="margin-top:0">Item</label><input id="name" required placeholder="e.g. Issue #1 first print, or 1985 robot figure">
+<div class="row">
+<div><label for="cat">Category</label><select id="cat"><option>Action figure</option><option>Comic</option><option>Trading card</option><option>Vinyl figure</option><option>Die-cast</option><option>Building set</option><option>Costume / prop</option><option>Poster / memorabilia</option><option>Video game</option><option>Plush</option><option>Other</option></select></div>
+<div><label for="cond">Condition</label><select id="cond"><option>Sealed / new</option><option>Mint / near mint</option><option>Loose, complete</option><option>Loose, incomplete</option><option>Graded</option><option>Used / played</option></select></div>
+</div>
+<div class="row">
+<div><label for="brand">Brand / publisher / company</label><input id="brand" list="brandList" placeholder="Who made it"><datalist id="brandList"></datalist></div>
+<div><label for="fran">Franchise / series / genre</label><input id="fran" list="franList" placeholder="e.g. a series, line or genre"><datalist id="franList"></datalist></div>
+</div>
+<div class="row">
+<div><label for="cost">Paid ($)</label><input id="cost" type="number" inputmode="decimal" min="0" step="0.01" value="0"></div>
+<div><label for="val">Current value ($)</label><input id="val" type="number" inputmode="decimal" min="0" step="0.01" value="0"></div>
+</div>
+<p style="margin-top:14px"><button type="submit">Add item</button></p>
+</form>
+</div>
+
+<div class="card">
+<div class="filters">
+<div class="search"><label for="q">Search your collection</label><input id="q" type="search" placeholder="Name, brand, franchise…"></div>
+<div><label for="fCat">Category</label><select id="fCat"></select></div>
+<div><label for="fBrand">Brand</label><select id="fBrand"></select></div>
+<div><label for="fFran">Franchise</label><select id="fFran"></select></div>
+</div>
+<div class="bar"><span class="note" id="showing"></span><button class="ghost" id="clearF" type="button" style="padding:6px 12px;font-size:.85rem">Clear filters</button></div>
+<div class="tablewrap"><table>
+<thead><tr>
+<th class="sortable" data-k="name">Item</th><th class="sortable" data-k="cat">Category</th><th class="sortable" data-k="brand">Brand</th>
+<th class="sortable num" data-k="cost">Paid</th><th class="sortable num" data-k="val">Value</th><th class="sortable num" data-k="gain">Gain</th><th></th>
+</tr></thead>
+<tbody id="list"></tbody>
+</table></div>
+<p style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap"><button class="ghost" id="csv" type="button">Export CSV</button><button class="ghost" id="clear" type="button">Delete all</button></p>
+<p class="note">Tap a column header to sort. Data is saved only on this device and browser, so export regularly to keep a backup. "Sold prices" links open eBay, and ShelfMath may earn a commission from them.</p>
+</div>
+
+<div class="ad"><!-- Ad slot: tracker-mid -->Advertisement</div>
+
+<h2>Why track your collection?</h2>
+<p>Knowing your cost basis helps with insurance, tax time if you sell, and spotting which pieces have climbed enough to flip. Update values a few times a year using recent sold listings, not asking prices. Filter by brand or franchise to see which part of your collection is growing fastest.</p>
+
+<div class="aff"><b>Display & storage</b>
+<p style="margin:6px 0">Browse storage and display gear by what you collect in the <a href="gear.html">collector gear guide</a>.</p>
+</div>
+<div class="aff"><b>Want it in a spreadsheet?</b><p style="margin:6px 0">The Collection Inventory template adds series, grade, location and insurance-ready totals by category. It works in Excel, Google Sheets and Numbers.</p><p style="margin:0"><a href="shop.html"><b>See the template ($9) →</b></a></p></div>
+<div class="card"><b>Fee changes & flip tips, once a month</b>
+<p class="note" style="margin:4px 0 10px">Marketplace fee updates, new free tools, and what's selling in comics, cards and figures. No spam.</p>
+<form name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thanks.html">
+<input type="hidden" name="form-name" value="newsletter"><p hidden><label>Leave blank <input name="bot-field"></label></p>
+<div style="display:flex;gap:10px"><input type="email" name="email" required placeholder="you@email.com" aria-label="Email address"><button type="submit">Subscribe</button></div>
+</form></div>
+</main>
+<footer><div class="wrap"><a href="about.html">About</a><a href="privacy.html">Privacy</a><span>© 2026 ShelfMath.</span></div></footer>
+<script>
+const KEY='shelfmath-collection';
+const EPN='&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=YOURCAMPID&toolid=10001';
+let items=[];
+try{items=JSON.parse(localStorage.getItem(KEY))||[]}catch(e){items=[]}
+items=items.map(i=>({name:i.name||'',cat:i.cat||'Other',cond:i.cond||'',brand:i.brand||'',fran:i.fran||'',cost:+i.cost||0,val:+i.val||0,id:i.id||Math.random().toString(36).slice(2)}));
+const $=id=>document.getElementById(id);
+const fmt=n=>(n<0?'-$':'$')+Math.abs(n).toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2});
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const st={q:'',cat:'All',brand:'All',fran:'All',sortK:'name',sortDir:1};
+function save(){try{localStorage.setItem(KEY,JSON.stringify(items))}catch(e){}}
+const uniq=k=>[...new Set(items.map(i=>i[k]).filter(Boolean))].sort((a,b)=>a.localeCompare(b));
+function fillSelect(el,vals,cur){el.innerHTML=['All',...vals].map(v=>`<option>${esc(v)}</option>`).join('');el.value=vals.includes(cur)?cur:'All';return el.value}
+function render(){
+  st.cat=fillSelect($('fCat'),uniq('cat'),st.cat);
+  st.brand=fillSelect($('fBrand'),uniq('brand'),st.brand);
+  st.fran=fillSelect($('fFran'),uniq('fran'),st.fran);
+  const COMMON=['Marvel','DC','Image','Dark Horse','IDW','BOOM! Studios','Hasbro','Mattel','NECA','McFarlane Toys','Funko','LEGO','Bandai','Hot Toys','Mezco','Super7','Pokémon','Magic: The Gathering','Yu-Gi-Oh!','Topps','Panini','Upper Deck','Hot Wheels','Matchbox','Greenlight'];
+  $('brandList').innerHTML=[...new Set([...uniq('brand'),...COMMON])].map(v=>`<option value="${esc(v)}">`).join('');
+  $('franList').innerHTML=uniq('fran').map(v=>`<option value="${esc(v)}">`).join('');
+  const q=st.q.toLowerCase().trim();
+  let list=items.filter(i=>(st.cat==='All'||i.cat===st.cat)&&(st.brand==='All'||i.brand===st.brand)&&(st.fran==='All'||i.fran===st.fran)&&(!q||[i.name,i.brand,i.fran,i.cat,i.cond].join(' ').toLowerCase().includes(q)));
+  const key=i=>st.sortK==='gain'?i.val-i.cost:i[st.sortK];
+  list.sort((a,b)=>{const x=key(a),y=key(b);return (typeof x==='number'?x-y:String(x).localeCompare(String(y)))*st.sortDir});
+  document.querySelectorAll('th.sortable').forEach(th=>th.setAttribute('aria-sort',th.dataset.k===st.sortK?(st.sortDir>0?'ascending':'descending'):'none'));
+  $('list').innerHTML=list.length?list.map(it=>{const g=it.val-it.cost;
+    const sub=[it.fran,it.cond].filter(Boolean).map(esc).join(' · ');
+    return`<tr><td><b>${esc(it.name)}</b><br><span class="sub">${sub}${sub?' · ':''}<a rel="sponsored nofollow noopener" target="_blank" href="https://www.ebay.com/sch/i.html?_nkw=${encodeURIComponent(it.name)}&LH_Sold=1&LH_Complete=1${EPN}&customid=tracker">sold prices</a></span></td><td>${esc(it.cat)}</td><td>${esc(it.brand)||'<span class="sub">—</span>'}</td><td class="num">${fmt(it.cost)}</td><td class="num">${fmt(it.val)}</td><td class="num ${g>=0?'pos':'neg'}">${fmt(g)}</td><td><button class="ghost rm" data-id="${it.id}" aria-label="Remove ${esc(it.name)}">✕</button></td></tr>`}).join('')
+    :`<tr><td colspan="7" class="note">${items.length?'No items match these filters.':'No items yet. Add your first one above.'}</td></tr>`;
+  const filtered=list.length!==items.length;
+  const paid=list.reduce((a,b)=>a+b.cost,0),val=list.reduce((a,b)=>a+b.val,0);
+  $('count').textContent=list.length;
+  $('paid').textContent=fmt(paid);$('value').textContent=fmt(val);
+  const g=$('gain');g.textContent=fmt(val-paid);g.className='big '+(val-paid>=0?'pos':'neg');
+  $('scope').textContent=filtered?`Totals for the ${list.length} filtered item${list.length===1?'':'s'} (of ${items.length}).`:'';
+  $('showing').textContent=items.length?`Showing ${list.length} of ${items.length}`:'';
+}
+$('f').addEventListener('submit',e=>{e.preventDefault();
+  const v=id=>$(id).value.trim();
+  items.push({name:v('name'),cat:v('cat'),cond:v('cond'),brand:v('brand'),fran:v('fran'),cost:parseFloat(v('cost'))||0,val:parseFloat(v('val'))||0,id:Math.random().toString(36).slice(2)});
+  save();const keep={cat:v('cat'),brand:v('brand'),fran:v('fran')};e.target.reset();
+  $('cat').value=keep.cat;$('brand').value=keep.brand;$('fran').value=keep.fran;
+  render();$('name').focus();});
+$('list').addEventListener('click',e=>{const b=e.target.closest('.rm');if(b){items=items.filter(i=>i.id!==b.dataset.id);save();render();}});
+document.querySelectorAll('th.sortable').forEach(th=>th.addEventListener('click',()=>{const k=th.dataset.k;if(st.sortK===k)st.sortDir*=-1;else{st.sortK=k;st.sortDir=['cost','val','gain'].includes(k)?-1:1}render()}));
+$('q').addEventListener('input',e=>{st.q=e.target.value;render()});
+[['fCat','cat'],['fBrand','brand'],['fFran','fran']].forEach(([id,k])=>$(id).addEventListener('change',e=>{st[k]=e.target.value;render()}));
+$('clearF').addEventListener('click',()=>{Object.assign(st,{q:'',cat:'All',brand:'All',fran:'All'});$('q').value='';render()});
+$('clear').addEventListener('click',()=>{if(confirm('Delete every item in your collection?')){items=[];save();render();}});
+$('csv').addEventListener('click',()=>{
+  const q=s=>'"'+String(s).replace(/"/g,'""')+'"';
+  const csv=['Item,Category,Brand,Franchise,Condition,Paid,Value,Gain'].concat(items.map(i=>[q(i.name),q(i.cat),q(i.brand),q(i.fran),q(i.cond),i.cost,i.val,(i.val-i.cost).toFixed(2)].join(','))).join('\n');
+  const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv'}));a.download='collection.csv';a.click();});
+render();
+</script>
+</body>
+</html>

@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Collector Gear Guide: Storage & Display for Comics, Cards, Figures & Props | ShelfMath</title>
+<meta name="description" content="Browse storage, display and shipping gear for comics, trading cards, action figures, vinyl, die-cast, building sets, costumes, props and memorabilia. Filter by type and brand.">
+<link rel="canonical" href="https://YOURDOMAIN.com/gear.html">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta property="og:image" content="https://YOURDOMAIN.com/logo.png">
+<meta property="og:site_name" content="ShelfMath">
+<!-- AdSense: paste your auto-ads script tag here after approval -->
+<style>
+.chips{display:flex;gap:8px;overflow-x:auto;padding:2px 0 10px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;font-size:.88rem;font-weight:600;border:1px solid var(--line);border-radius:2px;padding:7px 14px;background:var(--card);color:var(--ink);cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.filters{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:10px;margin:6px 0 4px}
+@media (max-width:640px){.filters{grid-template-columns:1fr 1fr}.filters .search{grid-column:1/-1}}
+.filters label{margin:0 0 4px;font-size:.8rem;color:var(--muted)}
+.count{display:flex;justify-content:space-between;align-items:center;margin:12px 0 4px}
+.count button{padding:6px 12px;font-size:.85rem}
+.items{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px;margin-top:8px}
+.item{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:3px;padding:16px}
+.item .meta{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px}
+.pill{font-size:.72rem;font-weight:700;border-radius:2px;padding:3px 9px;background:var(--bg);border:1px solid var(--line);color:var(--muted)}
+.pill.brand{color:var(--accent);border-color:var(--accent)}
+.item b{font-size:1.02rem}
+.item p{color:var(--muted);font-size:.9rem;margin:6px 0 14px;flex:1}
+.item a.btn{display:block;text-align:center;background:var(--accent);color:#fff;text-decoration:none;font-weight:700;font-size:.9rem;padding:10px;border-radius:2px}
+.empty{padding:30px;text-align:center;color:var(--muted)}
+</style>
+</head>
+<body>
+<header><div class="wrap"><a class="logo" href="/">Shelf<span>Math</span></a>
+<nav><a href="resale-calculator.html">Resale Fees</a><a href="grading-calculator.html">Grading</a><a href="collection-tracker.html">Tracker</a><a href="gear.html">Gear</a><a href="shop.html">Shop</a></nav></div></header>
+<main class="wrap">
+<h1>Collector Gear Guide</h1>
+<p class="lead">Storage, display and shipping gear for every kind of collection. Filter by what you collect, what you need, or the brand you trust.</p>
+
+<div class="chips" id="chips" role="group" aria-label="What do you collect?"></div>
+<div class="filters">
+<div class="search"><label for="q">Search</label><input id="q" type="search" placeholder="e.g. toploader, short box, helmet stand"></div>
+<div><label for="use">Need</label><select id="use"></select></div>
+<div><label for="brand">Brand</label><select id="brand"></select></div>
+<div><label for="sort">Sort</label><select id="sort"><option value="genre">By collectible</option><option value="az">Name A–Z</option><option value="za">Name Z–A</option><option value="brand">By brand</option><option value="use">By need</option></select></div>
+</div>
+<div class="count"><span class="note" id="count"></span><button class="ghost" id="reset" type="button">Reset filters</button></div>
+<div class="items" id="items"></div>
+
+<p class="note" style="margin-top:14px">As an Amazon Associate, ShelfMath earns from qualifying purchases. Links open Amazon search results so you can compare sizes and prices. Brand names belong to their owners. ShelfMath isn't affiliated with them.</p>
+
+<div class="ad"><!-- Ad slot: gear-1 -->Advertisement</div>
+
+<h2>Why storage matters for value</h2>
+<p>Condition is the single biggest driver of resale value for comics, cards and boxed collectibles. A crease, a sun-faded spine or a crushed box corner can cut a price in half, and grading companies notice everything. A few dollars on the right sleeve, case or frame protects pieces that can be worth hundreds.</p>
+<p>Planning to sell or grade? Run the numbers first with the <a href="resale-calculator.html">resale fee calculator</a> and the <a href="grading-calculator.html">grading calculator</a>.</p>
+<div class="card"><b>Fee changes & flip tips, once a month</b>
+<p class="note" style="margin:4px 0 10px">Marketplace fee updates, new free tools, and what's selling in comics, cards and figures. No spam.</p>
+<form name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thanks.html">
+<input type="hidden" name="form-name" value="newsletter"><p hidden><label>Leave blank <input name="bot-field"></label></p>
+<div style="display:flex;gap:10px"><input type="email" name="email" required placeholder="you@email.com" aria-label="Email address"><button type="submit">Subscribe</button></div>
+</form></div>
+</main>
+<footer><div class="wrap"><a href="about.html">About</a><a href="privacy.html">Privacy</a><span>© 2026 ShelfMath. Not affiliated with any brand or marketplace.</span></div></footer>
+<script>
+const TAG='YOURTAG-20';
+const GENRES=['Comics','Trading cards','Action figures','Vinyl figures','Die-cast','Building sets','Costumes & props','Posters & memorabilia','Shipping'];
+// [name, description, collectible type, need, brand, amazon search]
+const G=[
+['Acid-free comic bags & boards','The baseline for every book. Match the size to the era: current, silver or golden age.','Comics','Protection','BCW','BCW comic bags and boards'],
+['Comic bags & boards','Resealable bags with backing boards in standard comic sizes.','Comics','Protection','Ultra PRO','Ultra Pro comic bags boards'],
+['Mylar comic sleeves','Archival-grade protection for key issues you plan to hold long term.','Comics','Protection','Generic','mylar comic sleeves'],
+['Comic short boxes','Store books upright. Short boxes are easier to lift and stack than long boxes.','Comics','Storage','BCW','BCW comic short box'],
+['Comic long boxes','Maximum books per box for bulk runs and back issues.','Comics','Storage','BCW','BCW comic long box'],
+['Graded comic slab storage','Boxes sized for slabbed books, so they stand upright without scratching.','Comics','Storage','BCW','BCW graded comic slab box'],
+['Comic display frames','Wall-mount a favorite cover behind UV-protective acrylic.','Comics','Display','Generic','comic book display frame uv'],
+['Comic book mailers','Rigid mailers built for single issues and small stacks.','Comics','Shipping','Gemini','Gemini comic mailer'],
+['Penny sleeves','The first layer for every card worth keeping.','Trading cards','Protection','Ultra PRO','Ultra Pro penny sleeves'],
+['Toploaders (3x4)','Rigid holders for storing and shipping cards you might sell or grade.','Trading cards','Protection','Ultra PRO','Ultra Pro toploaders 3x4'],
+['Toploaders & sleeves combo','Bulk toploader packs with sleeves for sellers.','Trading cards','Protection','BCW','BCW toploaders'],
+['Magnetic one-touch holders','Display-quality cases for your best cards.','Trading cards','Display','Ultra PRO','Ultra Pro one touch magnetic holder'],
+['Side-loading card binders','Keep sets organized without cards slipping out.','Trading cards','Storage','Vault X','Vault X binder'],
+['9-pocket binder pages','Classic pages for building and showing off sets.','Trading cards','Storage','Ultra PRO','Ultra Pro 9 pocket pages'],
+['Card storage boxes','Cardboard or plastic row boxes for bulk cards.','Trading cards','Storage','BCW','BCW card storage box'],
+['Graded card storage boxes','Sized for slabs, so they stand upright and don\'t scratch.','Trading cards','Storage','Generic','graded card storage box'],
+['Card shipping supplies','Team bags and bubble mailers sized for toploaders.','Trading cards','Shipping','Generic','team bags toploader bubble mailers'],
+['Clamshell protectors for carded figures','Protect card corners and bubbles, which drive sealed value.','Action figures','Protection','Generic','carded action figure protector case'],
+['Boxed figure protectors','Clear acrylic or PET cases for window-box figures.','Action figures','Protection','Generic','boxed action figure protector'],
+['Acrylic display cases','Dust-free display for loose or boxed figures.','Action figures','Display','Generic','acrylic display case action figure'],
+['Display risers & LED lighting','Make a shelf read like a collection, not clutter.','Action figures','Display','Generic','acrylic display risers led'],
+['Glass display cabinets','The classic collector cabinet. Check that the shelves are adjustable.','Action figures','Display','Generic','glass display cabinet collectibles'],
+['Figure stands','Clear stands that keep loose figures posed without tipping.','Action figures','Display','Generic','action figure display stand'],
+['Vinyl figure box protectors (soft)','Everyday protection for boxed vinyl figures.','Vinyl figures','Protection','Generic','vinyl figure box protectors'],
+['Vinyl figure hard stacks','Rigid stackable cases for grails and exclusives.','Vinyl figures','Protection','Generic','vinyl figure hard stack protector'],
+['Wall shelves for boxed vinyl','Floating shelves sized to standard figure boxes.','Vinyl figures','Display','Generic','vinyl figure wall shelf'],
+['1:64 die-cast display cases','Wall cases with individual slots for small cars.','Die-cast','Display','Generic','1:64 diecast display case'],
+['Carded die-cast protectors','Clamshells that keep blister cards flat and crisp.','Die-cast','Protection','Generic','diecast card protector'],
+['Die-cast carry cases','Portable cases for trading at shows.','Die-cast','Storage','Generic','diecast car carry case'],
+['Building set display cases','Acrylic cases with bases keep finished builds dust-free.','Building sets','Display','Generic','acrylic display case building set'],
+['Minifigure display frames','Wall frames with studs for minifigure collections.','Building sets','Display','Generic','minifigure display frame'],
+['Parts sorting drawers','Stackable drawers for loose pieces.','Building sets','Storage','Generic','building brick sorting storage drawers'],
+['Helmet & mask display stands','Keep replica helmets and masks off the shelf and holding their shape.','Costumes & props','Display','Generic','helmet display stand'],
+['Prop replica display stands','Adjustable stands for swords, blasters, wands and other props.','Costumes & props','Display','Generic','prop replica display stand'],
+['Dress forms & mannequins','Display a full costume or cosplay build without wrinkling it.','Costumes & props','Display','Generic','adjustable dress form mannequin'],
+['Breathable garment bags','Store costumes dust-free without trapping moisture.','Costumes & props','Storage','Generic','breathable garment bags costume'],
+['Shadow boxes','Frame small props, patches, tickets and badges.','Costumes & props','Display','Generic','deep shadow box display uv'],
+['EVA foam & cosplay supplies','Foam, thermoplastic and primer for building your own props.','Costumes & props','Making','Generic','eva foam cosplay supplies'],
+['Cosplay paint & sealer kits','Paints, sealers and brushes for prop finishing.','Costumes & props','Making','Generic','cosplay prop paint kit'],
+['UV-protective poster frames','Movie posters and art prints fade fast in sunlight.','Posters & memorabilia','Display','Generic','uv protective poster frame'],
+['Acid-free poster storage','Store rolled posters in tubes or flat in archival sleeves.','Posters & memorabilia','Storage','Generic','acid free poster storage'],
+['Autograph display cases','For signed photos, cards and small memorabilia.','Posters & memorabilia','Display','Generic','autograph display case uv'],
+['Enamel pin display boards','Show off pin collections on a wall or desk.','Posters & memorabilia','Display','Generic','enamel pin display board'],
+['Digital shipping scale','Weigh before you list, so your shipping charge covers the label.','Shipping','Shipping','Generic','digital shipping scale'],
+['4x6 thermal label printer','No ink, and it pays for itself fast at volume.','Shipping','Shipping','Generic','thermal label printer 4x6'],
+['Double-wall shipping boxes','Extra crush protection for boxed and graded items.','Shipping','Shipping','Generic','double wall shipping box'],
+['Bubble wrap & packing kit','Wrap, tape and fill for everyday shipping.','Shipping','Shipping','Generic','shipping supplies kit bubble wrap'],
+];
+const items=G.map(([name,desc,genre,use,brand,q])=>({name,desc,genre,use,brand,q}));
+const $=id=>document.getElementById(id);
+const state={genre:'All',q:'',use:'All',brand:'All',sort:'genre'};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function opts(el,vals){el.innerHTML=['All',...vals].map(v=>`<option>${esc(v)}</option>`).join('')}
+opts($('use'),[...new Set(items.map(i=>i.use))].sort());
+opts($('brand'),[...new Set(items.map(i=>i.brand))].sort((a,b)=>a==='Generic'?1:b==='Generic'?-1:a.localeCompare(b)));
+$('chips').innerHTML=['All',...GENRES].map(g=>`<button class="chip" type="button" aria-pressed="${g==='All'}" data-g="${esc(g)}">${esc(g)}</button>`).join('');
+function readHash(){Object.assign(state,{genre:'All',q:'',use:'All',brand:'All',sort:'genre'});const p=new URLSearchParams(location.hash.slice(1));for(const k of ['genre','use','brand','sort'])if(p.get(k))state[k]=p.get(k);state.q=p.get('q')||''}
+function writeHash(){const p=new URLSearchParams();for(const k of ['genre','use','brand','q','sort'])if(state[k]&&state[k]!=='All'&&!(k==='sort'&&state[k]==='genre'))p.set(k,state[k]);history.replaceState(null,'',p.toString()?'#'+p:location.pathname)}
+function render(){
+  $('q').value=state.q;$('use').value=state.use;$('brand').value=state.brand;$('sort').value=state.sort;
+  document.querySelectorAll('.chip').forEach(c=>c.setAttribute('aria-pressed',c.dataset.g===state.genre));
+  const q=state.q.toLowerCase().trim();
+  let list=items.filter(i=>(state.genre==='All'||i.genre===state.genre)&&(state.use==='All'||i.use===state.use)&&(state.brand==='All'||i.brand===state.brand)&&(!q||(i.name+' '+i.desc+' '+i.brand+' '+i.genre).toLowerCase().includes(q)));
+  const gi=g=>GENRES.indexOf(g);
+  const by={genre:(a,b)=>gi(a.genre)-gi(b.genre)||a.name.localeCompare(b.name),az:(a,b)=>a.name.localeCompare(b.name),za:(a,b)=>b.name.localeCompare(a.name),brand:(a,b)=>a.brand.localeCompare(b.brand)||a.name.localeCompare(b.name),use:(a,b)=>a.use.localeCompare(b.use)||a.name.localeCompare(b.name)};
+  list.sort(by[state.sort]||by.genre);
+  $('count').textContent=`${list.length} item${list.length===1?'':'s'}`;
+  $('items').innerHTML=list.length?list.map(i=>`<div class="item"><div class="meta"><span class="pill">${esc(i.genre)}</span><span class="pill">${esc(i.use)}</span>${i.brand!=='Generic'?`<span class="pill brand">${esc(i.brand)}</span>`:''}</div><b>${esc(i.name)}</b><p>${esc(i.desc)}</p><a class="btn" rel="sponsored nofollow" target="_blank" href="https://www.amazon.com/s?k=${encodeURIComponent(i.q)}&tag=${TAG}">See options on Amazon</a></div>`).join(''):'<div class="empty">Nothing matches those filters. <a href="#" id="clr">Reset</a></div>';
+  const c=$('clr');if(c)c.onclick=e=>{e.preventDefault();reset()};
+  writeHash();
+}
+function reset(){Object.assign(state,{genre:'All',q:'',use:'All',brand:'All',sort:'genre'});render()}
+$('chips').addEventListener('click',e=>{const b=e.target.closest('.chip');if(b){state.genre=b.dataset.g;render()}});
+$('q').addEventListener('input',e=>{state.q=e.target.value;render()});
+['use','brand','sort'].forEach(k=>$(k).addEventListener('change',e=>{state[k]=e.target.value;render()}));
+$('reset').addEventListener('click',reset);
+window.addEventListener('hashchange',()=>{readHash();render()});
+readHash();render();
+</script>
+</body>
+</html>

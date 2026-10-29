@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ShelfMath — Free Calculators for Collectors & Resellers: Toys, Comics, Cards</title>
+<meta name="description" content="Free tools for collectors and resellers of toys, comics, cards, figures and props: compare eBay, Mercari and Whatnot fees, decide if grading is worth it, and track your collection's value.">
+<link rel="canonical" href="https://YOURDOMAIN.com/">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta property="og:image" content="https://YOURDOMAIN.com/logo.png">
+<meta property="og:site_name" content="ShelfMath">
+<!-- AdSense: paste your auto-ads script tag here after approval -->
+</head>
+<body>
+<header><div class="wrap"><a class="logo" href="/">Shelf<span>Math</span></a>
+<nav><a href="resale-calculator.html">Resale Fees</a><a href="grading-calculator.html">Grading</a><a href="collection-tracker.html">Tracker</a><a href="gear.html">Gear</a><a href="shop.html">Shop</a></nav></div></header>
+<main class="wrap">
+<h1>Know your numbers before you buy, grade, or sell.</h1>
+<p class="lead">Free calculators for comics, trading cards, action figures, vinyl, die-cast, costumes, props and every other pop culture collectible. No sign-up.</p>
+<style>
+.chips{display:flex;gap:8px;overflow-x:auto;padding:2px 0 10px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;font-size:.88rem;font-weight:600;border:1px solid var(--line);border-radius:2px;padding:7px 14px;background:var(--card);color:var(--ink);cursor:pointer;text-decoration:none}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.tool[hidden]{display:none}
+</style>
+<input id="toolq" type="search" placeholder="Search tools and guides…" aria-label="Search tools and guides" style="margin-bottom:10px">
+<div class="chips" id="topics" role="group" aria-label="Filter by topic">
+<button class="chip" type="button" data-t="all" aria-pressed="true">All</button><button class="chip" type="button" data-t="selling" aria-pressed="false">Selling</button><button class="chip" type="button" data-t="grading" aria-pressed="false">Grading</button><button class="chip" type="button" data-t="collecting" aria-pressed="false">Collecting</button><button class="chip" type="button" data-t="gear" aria-pressed="false">Gear & templates</button>
+</div>
+<div class="grid" id="tools">
+<a class="tool" href="resale-calculator.html" data-tags="selling"><b>Resale Fee Calculator</b><small>See what you actually keep on eBay, Mercari, and Whatnot, side by side.</small></a>
+<a class="tool" href="grading-calculator.html" data-tags="grading selling"><b>Is Grading Worth It?</b><small>Grading fees vs. expected value bump, with break-even math.</small></a>
+<a class="tool" href="collection-tracker.html" data-tags="collecting"><b>Collection Tracker</b><small>Log what you paid and what it's worth. Sort by category, brand or franchise.</small></a>
+<a class="tool" href="gear.html" data-tags="gear collecting"><b>Collector Gear Guide</b><small>Storage, display and shipping gear. Filter by what you collect and brand.</small></a>
+<a class="tool" href="shop.html" data-tags="gear selling grading collecting"><b>Spreadsheet Templates</b><small>Profit tracker, collection inventory and grading log templates.</small></a>
+</div>
+<p class="note" id="noTools" hidden>No tools match. Try another word.</p>
+<h2>Shop gear by what you collect</h2>
+<div class="chips">
+<a class="chip" href="gear.html#genre=Comics">Comics</a><a class="chip" href="gear.html#genre=Trading+cards">Trading cards</a><a class="chip" href="gear.html#genre=Action+figures">Action figures</a><a class="chip" href="gear.html#genre=Vinyl+figures">Vinyl figures</a><a class="chip" href="gear.html#genre=Die-cast">Die-cast</a><a class="chip" href="gear.html#genre=Building+sets">Building sets</a><a class="chip" href="gear.html#genre=Costumes+%26+props">Costumes & props</a><a class="chip" href="gear.html#genre=Posters+%26+memorabilia">Posters & memorabilia</a><a class="chip" href="gear.html#genre=Shipping">Shipping</a>
+</div>
+<script>
+(function(){let t='all';const q=document.getElementById('toolq');
+function apply(){const s=q.value.toLowerCase().trim();let n=0;
+document.querySelectorAll('#tools .tool').forEach(a=>{const tags=(a.dataset.tags||'');const okT=t==='all'||!tags||tags.split(' ').includes(t);const okS=!s||a.textContent.toLowerCase().includes(s);a.hidden=!(okT&&okS);if(!a.hidden)n++});
+document.getElementById('noTools').hidden=n>0;
+document.querySelectorAll('#topics .chip').forEach(c=>c.setAttribute('aria-pressed',c.dataset.t===t))}
+document.getElementById('topics').addEventListener('click',e=>{const b=e.target.closest('.chip');if(b){t=b.dataset.t;apply()}});
+q.addEventListener('input',apply);})();
+</script>
+<h2>Check sold prices by brand</h2>
+<p class="note" style="margin-top:0">Recent eBay sales for each brand or publisher. Opens in a new tab. ShelfMath may earn a commission from eBay links.</p>
+<style>
+.brands{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:4px 28px;margin-top:12px}
+.brands section{border-top:2px solid var(--ink);padding-top:8px}
+.brands h3{margin:0 0 6px;font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.brands ul{list-style:none;margin:0;padding:0;columns:2;column-gap:16px}
+.brands li{break-inside:avoid;font-family:var(--body)}
+.brands a{display:block;padding:6px 0;border-bottom:1px solid var(--line);color:var(--ink);text-decoration:none;font-weight:600;font-size:.95rem}
+.brands a:hover{color:var(--accent)}
+</style>
+<div class="brands" id="brands"></div>
+<p class="note">Brand names are trademarks of their owners. ShelfMath is independent and not affiliated with or endorsed by any of them.</p>
+<script>
+(function(){
+const EPN='&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=YOURCAMPID&toolid=10001&customid=brands';
+const B={
+ 'Comic publishers':[['Marvel','marvel comics'],['DC','dc comics'],['Image','image comics'],['Dark Horse','dark horse comics'],['IDW','idw comics'],['BOOM! Studios','boom studios comics'],['Archie','archie comics'],['Valiant','valiant comics']],
+ 'Figures & toys':[['Hasbro','hasbro action figure'],['Mattel','mattel action figure'],['NECA','neca figure'],['McFarlane Toys','mcfarlane toys figure'],['Funko','funko pop'],['LEGO','lego set'],['Bandai','bandai figure'],['Hot Toys','hot toys figure'],['Mezco','mezco one 12'],['Super7','super7 figure']],
+ 'Trading cards':[['Pokémon','pokemon cards'],['Magic: The Gathering','magic the gathering cards'],['Yu-Gi-Oh!','yugioh cards'],['Topps','topps cards'],['Panini','panini cards'],['Upper Deck','upper deck cards'],['Bowman','bowman cards'],['Donruss','donruss cards']],
+ 'Die-cast & vehicles':[['Hot Wheels','hot wheels'],['Matchbox','matchbox cars'],['Greenlight','greenlight diecast'],['Maisto','maisto diecast'],['Johnny Lightning','johnny lightning diecast'],['M2 Machines','m2 machines diecast']],
+};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+document.getElementById('brands').innerHTML=Object.entries(B).map(([g,list])=>`<section><h3>${esc(g)}</h3><ul>${list.map(([n,q])=>`<li><a rel="sponsored nofollow noopener" target="_blank" href="https://www.ebay.com/sch/i.html?_nkw=${encodeURIComponent(q)}&LH_Sold=1&LH_Complete=1${EPN}">${esc(n)}</a></li>`).join('')}</ul></section>`).join('');
+})();
+</script>
+<div class="ad"><!-- Ad slot: home-mid -->Advertisement</div>
+<h2>Why these tools exist</h2>
+<p>Collectible margins are thin. Between marketplace fees, shipping, and grading costs, a "great flip" can quietly turn into a loss. ShelfMath does the math in seconds so you can price confidently, skip bad buys, and know when a slab pays for itself.</p>
+<div class="aff"><b>Collector essentials</b>
+<ul>
+<li><a rel="sponsored nofollow" href="https://www.amazon.com/s?k=vinyl+figure+box+protectors&tag=YOURTAG-20">Box protectors for vinyl figures</a></li>
+<li><a rel="sponsored nofollow" href="https://www.amazon.com/s?k=acrylic+display+case+action+figure&tag=YOURTAG-20">Acrylic display cases</a></li>
+<li><a rel="sponsored nofollow" href="https://www.amazon.com/s?k=shipping+boxes+bubble+wrap+kit&tag=YOURTAG-20">Shipping boxes & bubble wrap</a></li>
+</ul><p class="note">As an Amazon Associate, ShelfMath earns from qualifying purchases.</p></div>
+<div class="card"><b>Fee changes & flip tips, once a month</b>
+<p class="note" style="margin:4px 0 10px">Marketplace fee updates, new free tools, and what's selling in comics, cards and figures. No spam.</p>
+<form name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thanks.html">
+<input type="hidden" name="form-name" value="newsletter"><p hidden><label>Leave blank <input name="bot-field"></label></p>
+<div style="display:flex;gap:10px"><input type="email" name="email" required placeholder="you@email.com" aria-label="Email address"><button type="submit">Subscribe</button></div>
+</form></div>
+</main>
+<footer><div class="wrap"><a href="about.html">About</a><a href="privacy.html">Privacy</a><span>© 2026 ShelfMath. Not affiliated with any marketplace or toy brand.</span></div></footer>
+</body>
+</html>

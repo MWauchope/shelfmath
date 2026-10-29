@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Is Grading Worth It? Comic, Card & Figure Grading Calculator | ShelfMath</title>
+<meta name="description" content="Decide if grading a comic, trading card, action figure or collectible toy is worth the cost. Enter grading fees, shipping, and expected values by grade to see expected profit and break-even.">
+<link rel="canonical" href="https://YOURDOMAIN.com/grading-calculator.html">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta property="og:image" content="https://YOURDOMAIN.com/logo.png">
+<meta property="og:site_name" content="ShelfMath">
+<!-- AdSense: paste your auto-ads script tag here after approval -->
+</head>
+<body>
+<header><div class="wrap"><a class="logo" href="/">Shelf<span>Math</span></a>
+<nav><a href="resale-calculator.html">Resale Fees</a><a href="grading-calculator.html">Grading</a><a href="collection-tracker.html">Tracker</a><a href="gear.html">Gear</a><a href="shop.html">Shop</a></nav></div></header>
+<main class="wrap">
+<h1>Is Grading Worth It?</h1>
+<p class="lead">Compare selling raw against paying to grade, weighted by how likely each grade is.</p>
+
+<div class="card">
+<h2 style="margin-top:0">Costs</h2>
+<div class="row">
+<div><label for="raw">Value if sold ungraded ($)</label><input id="raw" type="number" inputmode="decimal" value="120" min="0" step="0.01"></div>
+<div><label for="fee">Grading fee per item ($)</label><input id="fee" type="number" inputmode="decimal" value="60" min="0" step="0.01"></div>
+</div>
+<div class="row">
+<div><label for="shipTo">Shipping + insurance to grader ($)</label><input id="shipTo" type="number" inputmode="decimal" value="25" min="0" step="0.01"></div>
+<div><label for="shipBack">Return shipping ($)</label><input id="shipBack" type="number" inputmode="decimal" value="20" min="0" step="0.01"></div>
+</div>
+<h2>Likely outcomes</h2>
+<p class="note">Your honest odds for each grade band and what a graded copy sells for. <a rel="sponsored nofollow noopener" target="_blank" href="https://www.ebay.com/sch/i.html?_nkw=graded+action+figure&LH_Sold=1&LH_Complete=1&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=YOURCAMPID&toolid=10001&customid=grading">Check graded sold prices on eBay</a> (ShelfMath may earn a commission).</p>
+<div class="tablewrap"><table>
+<thead><tr><th>Grade band</th><th>Chance (%)</th><th>Graded value ($)</th></tr></thead>
+<tbody>
+<tr><td>High (top grades)</td><td><input id="pH" type="number" value="30" min="0" max="100"></td><td><input id="vH" type="number" value="400" min="0"></td></tr>
+<tr><td>Mid grades</td><td><input id="pM" type="number" value="50" min="0" max="100"></td><td><input id="vM" type="number" value="200" min="0"></td></tr>
+<tr><td>Low grades</td><td><input id="pL" type="number" value="20" min="0" max="100"></td><td><input id="vL" type="number" value="110" min="0"></td></tr>
+</tbody></table></div>
+<p class="note" id="warn"></p>
+</div>
+
+<div class="card">
+<div class="note">Expected gain from grading</div>
+<div class="big" id="gain">—</div>
+<p id="verdict"></p>
+<table>
+<tr><td>Expected graded value</td><td class="num" id="ev"></td></tr>
+<tr><td>Total grading cost</td><td class="num" id="tc"></td></tr>
+<tr><td>Net if graded</td><td class="num" id="net"></td></tr>
+<tr><td>Sell raw</td><td class="num" id="rawOut"></td></tr>
+<tr><td>Break-even graded value</td><td class="num" id="be"></td></tr>
+</table>
+</div>
+
+<div class="ad"><!-- Ad slot: grading-mid -->Advertisement</div>
+
+<h2>When grading usually pays off</h2>
+<p>Grading makes the most sense when there's a big price gap between top grades and everything else, and you're confident the piece is near-mint: sharp corners and centering on cards, flat spines and white pages on comics, and crisp, uncrushed packaging on figures. If the high-grade premium is small, or the item is worth less than a few times the grading fee, selling raw is usually smarter.</p>
+<h2>Don't forget</h2>
+<p>Grading takes weeks to months, and the market can move while you wait. Factor in selling fees too, since they scale with the higher graded price. The <a href="resale-calculator.html">resale fee calculator</a> shows you the payout.</p>
+
+<div class="aff"><b>Protect it before you ship it</b>
+<ul>
+<li><a rel="sponsored nofollow" href="https://www.amazon.com/s?k=action+figure+clamshell+protector&tag=YOURTAG-20">Clamshell protectors</a></li>
+<li><a rel="sponsored nofollow" href="https://www.amazon.com/s?k=double+wall+shipping+box&tag=YOURTAG-20">Double-wall shipping boxes</a></li>
+</ul><p class="note">As an Amazon Associate, ShelfMath earns from qualifying purchases.</p></div>
+<div class="aff"><b>Keep a log of every submission</b><p style="margin:6px 0">The Grading Submission Log tracks cost, turnaround and gain vs raw for every comic, card and figure you send out.</p><p style="margin:0"><a href="shop.html"><b>See the template ($7) →</b></a></p></div>
+<div class="card"><b>Fee changes & flip tips, once a month</b>
+<p class="note" style="margin:4px 0 10px">Marketplace fee updates, new free tools, and what's selling in comics, cards and figures. No spam.</p>
+<form name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thanks.html">
+<input type="hidden" name="form-name" value="newsletter"><p hidden><label>Leave blank <input name="bot-field"></label></p>
+<div style="display:flex;gap:10px"><input type="email" name="email" required placeholder="you@email.com" aria-label="Email address"><button type="submit">Subscribe</button></div>
+</form></div>
+</main>
+<footer><div class="wrap"><a href="about.html">About</a><a href="privacy.html">Privacy</a><span>© 2026 ShelfMath. Estimates only. Not affiliated with any grading company.</span></div></footer>
+<script>
+const $=id=>parseFloat(document.getElementById(id).value)||0;
+const fmt=n=>(n<0?'-$':'$')+Math.abs(n).toFixed(2);
+const set=(id,v)=>document.getElementById(id).textContent=v;
+function calc(){
+  const pH=$('pH'),pM=$('pM'),pL=$('pL'),tot=pH+pM+pL;
+  set('warn',Math.abs(tot-100)>0.01?`Chances add up to ${tot}%. They'll be scaled to 100%.`:'');
+  const k=tot?1/tot:0;
+  const ev=(pH*$('vH')+pM*$('vM')+pL*$('vL'))*k;
+  const tc=$('fee')+$('shipTo')+$('shipBack');
+  const net=ev-tc,raw=$('raw'),gain=net-raw;
+  set('ev',fmt(ev));set('tc',fmt(tc));set('net',fmt(net));set('rawOut',fmt(raw));set('be',fmt(raw+tc));
+  const g=document.getElementById('gain');g.textContent=fmt(gain);g.className='big '+(gain>=0?'pos':'neg');
+  set('verdict',gain>raw*0.15?'Grading looks worth it, assuming your grade odds are realistic.':gain>=0?'Marginal. Small upside for the time, risk, and wait.':'Sell it raw. Grading costs more than it is likely to add.');
+}
+document.querySelectorAll('input').forEach(i=>i.addEventListener('input',calc));calc();
+</script>
+</body>
+</html>

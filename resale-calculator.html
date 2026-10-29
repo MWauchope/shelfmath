@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Resale Fee Calculator for Collectibles: eBay vs Mercari vs Whatnot (2026) | ShelfMath</title>
+<meta name="description" content="Compare eBay, Mercari, and Whatnot seller fees for collectible toys, comics, cards and figures. Enter your sale price and costs to see payout, profit, and margin on each platform.">
+<link rel="canonical" href="https://YOURDOMAIN.com/resale-calculator.html">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta property="og:image" content="https://YOURDOMAIN.com/logo.png">
+<meta property="og:site_name" content="ShelfMath">
+<!-- AdSense: paste your auto-ads script tag here after approval -->
+</head>
+<body>
+<header><div class="wrap"><a class="logo" href="/">Shelf<span>Math</span></a>
+<nav><a href="resale-calculator.html">Resale Fees</a><a href="grading-calculator.html">Grading</a><a href="collection-tracker.html">Tracker</a><a href="gear.html">Gear</a><a href="shop.html">Shop</a></nav></div></header>
+<main class="wrap">
+<h1>Collectibles Resale Fee Calculator</h1>
+<p class="lead">What you actually keep selling a comic, card, figure or toy on eBay, Mercari, and Whatnot.</p>
+
+<div class="card">
+<label for="comp" style="margin-top:0">Not sure what to price it at? Check recent sold prices</label>
+<form id="compForm" style="display:flex;gap:10px"><input id="comp" placeholder="e.g. 1985 robot figure sealed"><button type="submit">Search sold</button></form>
+<p class="note">Opens eBay's sold listings in a new tab. ShelfMath may earn a commission from eBay links.</p>
+</div>
+
+<div class="card">
+<div class="row">
+<div><label for="price">Sale price ($)</label><input id="price" type="number" inputmode="decimal" value="50" min="0" step="0.01"></div>
+<div><label for="ship">Shipping the buyer pays ($)</label><input id="ship" type="number" inputmode="decimal" value="8" min="0" step="0.01"></div>
+</div>
+<div class="row">
+<div><label for="label">Your shipping label cost ($)</label><input id="label" type="number" inputmode="decimal" value="8" min="0" step="0.01"></div>
+<div><label for="cost">What you paid for the item ($)</label><input id="cost" type="number" inputmode="decimal" value="20" min="0" step="0.01"></div>
+</div>
+<div class="row">
+<div><label for="supplies">Packing supplies ($)</label><input id="supplies" type="number" inputmode="decimal" value="1.5" min="0" step="0.01"></div>
+<div><label for="tax">Buyer's sales tax rate (%)</label><input id="tax" type="number" inputmode="decimal" value="8" min="0" step="0.1"></div>
+</div>
+<details style="margin-top:14px"><summary style="cursor:pointer;font-weight:600">Fee settings (edit if rates change)</summary>
+<div class="row">
+<div><label for="ebayRate">eBay final value fee (%)</label><input id="ebayRate" type="number" value="13.6" step="0.01"></div>
+<div><label for="ebayAds">eBay promoted listing (%)</label><input id="ebayAds" type="number" value="0" step="0.1"></div>
+</div>
+<div class="row">
+<div><label for="mercRate">Mercari selling fee (%)</label><input id="mercRate" type="number" value="10" step="0.01"></div>
+<div><label for="wnRate">Whatnot commission (%)</label><input id="wnRate" type="number" value="8" step="0.01"></div>
+</div>
+<p class="note">Defaults reflect published US rates as of October 2026: eBay 13.6% of the total (incl. shipping and tax) + $0.40 per order ($0.30 under $10); Mercari 10% of item + shipping; Whatnot 8% of item + 2.9% + $0.30 processing on the order total.</p>
+</details>
+</div>
+
+<div class="card">
+<div class="tablewrap"><table>
+<thead><tr><th>Platform</th><th class="num">Fees</th><th class="num">Payout</th><th class="num">Profit</th><th class="num">Margin</th></tr></thead>
+<tbody id="out"></tbody>
+</table></div>
+<p class="note" id="summary"></p>
+</div>
+
+<div class="ad"><!-- Ad slot: resale-mid -->Advertisement</div>
+
+<h2>How the fees work</h2>
+<p><b>eBay</b> charges its final value fee on the whole order, including the shipping and sales tax the buyer pays, plus a small per-order fee. Promoted listings add another percentage on top if you use them.</p>
+<p><b>Mercari</b> takes a flat percentage of the item price plus buyer-paid shipping, with no separate processing fee.</p>
+<p><b>Whatnot</b> takes a commission on the item price only, then a payment processing fee on the full order. It's often the cheapest for mid-priced toys, but you need an audience for live shows.</p>
+<h2>Tips for better margins</h2>
+<p>Bundle low-value figures into lots so the flat per-order fees hurt less. Weigh and measure before listing so your shipping charge covers the real label. For anything over about $100, compare platforms. A couple of points of fees adds up fast.</p>
+
+<div class="aff"><b>Selling on more than one platform?</b>
+<p style="margin:6px 0">Crosslisting apps post one listing to eBay, Mercari, Whatnot and more, and delist everywhere when it sells.</p>
+<ul>
+<li><a rel="sponsored nofollow" href="YOUR-VENDOO-LINK">Vendoo</a>: crosslisting plus inventory and sales analytics</li>
+<li><a rel="sponsored nofollow" href="YOUR-LISTPERFECTLY-LINK">List Perfectly</a>: crosslisting across many marketplaces</li>
+</ul><p class="note">ShelfMath may earn a commission if you sign up through these links.</p></div>
+
+<div class="aff"><b>Cut your shipping costs</b>
+<ul>
+<li><a rel="sponsored nofollow" href="https://www.amazon.com/s?k=digital+shipping+scale&tag=YOURTAG-20">Digital shipping scale</a></li>
+<li><a rel="sponsored nofollow" href="https://www.amazon.com/s?k=thermal+label+printer+4x6&tag=YOURTAG-20">4x6 thermal label printer</a></li>
+<li><a rel="sponsored nofollow" href="https://www.amazon.com/s?k=corrugated+shipping+boxes+assorted&tag=YOURTAG-20">Assorted shipping boxes</a></li>
+</ul><p class="note">As an Amazon Associate, ShelfMath earns from qualifying purchases.</p></div>
+<div class="aff"><b>Track every flip, not just one</b><p style="margin:6px 0">The Reseller Profit Tracker spreadsheet logs every buy and sale, calculates fees for each platform automatically, and shows profit by platform and category.</p><p style="margin:0"><a href="shop.html"><b>See the template ($12) →</b></a></p></div>
+<div class="card"><b>Fee changes & flip tips, once a month</b>
+<p class="note" style="margin:4px 0 10px">Marketplace fee updates, new free tools, and what's selling in comics, cards and figures. No spam.</p>
+<form name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thanks.html">
+<input type="hidden" name="form-name" value="newsletter"><p hidden><label>Leave blank <input name="bot-field"></label></p>
+<div style="display:flex;gap:10px"><input type="email" name="email" required placeholder="you@email.com" aria-label="Email address"><button type="submit">Subscribe</button></div>
+</form></div>
+</main>
+<footer><div class="wrap"><a href="about.html">About</a><a href="privacy.html">Privacy</a><span>© 2026 ShelfMath. Estimates only. Not affiliated with eBay, Mercari, or Whatnot.</span></div></footer>
+<script>
+const $=id=>parseFloat(document.getElementById(id).value)||0;
+const fmt=n=>(n<0?'-$':'$')+Math.abs(n).toFixed(2);
+function calc(){
+  const p=$('price'),s=$('ship'),lbl=$('label'),c=$('cost'),sup=$('supplies'),t=$('tax')/100;
+  const sub=p+s,tax=sub*t,costs=lbl+c+sup;
+  const ebay=( $('ebayRate')/100)*(sub+tax)+(sub>10?0.40:0.30)+($('ebayAds')/100)*sub;
+  const merc=($('mercRate')/100)*sub;
+  const wn=($('wnRate')/100)*p+0.029*(sub+tax)+0.30;
+  const rows=[['eBay',ebay],['Mercari',merc],['Whatnot',wn]].map(([n,f])=>{const pay=sub-f,pr=pay-costs;return{n,f,pay,pr,m:p?pr/p*100:0}});
+  const best=rows.reduce((a,b)=>b.pr>a.pr?b:a);
+  document.getElementById('out').innerHTML=rows.map(r=>`<tr class="${r===best?'best':''}"><td><b>${r.n}</b></td><td class="num">${fmt(r.f)}</td><td class="num">${fmt(r.pay)}</td><td class="num ${r.pr>=0?'pos':'neg'}">${fmt(r.pr)}</td><td class="num">${r.m.toFixed(1)}%</td></tr>`).join('');
+  const roi=c?best.pr/c*100:0;
+  document.getElementById('summary').textContent=`${best.n} keeps you the most: ${fmt(best.pr)} profit${c?`, a ${roi.toFixed(0)}% return on what you paid`:''}.`;
+}
+document.querySelectorAll('input:not(#comp)').forEach(i=>i.addEventListener('input',calc));calc();
+const EPN='&mkevt=1&mkcid=1&mkrid=711-53200-19255-0&campid=YOURCAMPID&toolid=10001';
+document.getElementById('compForm').addEventListener('submit',e=>{e.preventDefault();
+  const q=document.getElementById('comp').value.trim();if(!q)return;
+  window.open('https://www.ebay.com/sch/i.html?_nkw='+encodeURIComponent(q)+'&LH_Sold=1&LH_Complete=1'+EPN+'&customid=resale','_blank','noopener');});
+</script>
+</body>
+</html>
